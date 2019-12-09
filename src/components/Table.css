@@ -1,0 +1,26 @@
+.table-container {
+    margin-top: 70px;
+    font-size: 0.85em;
+    overflow-y:scroll;
+    height:400px;
+}
+.table-header input::placeholder {
+    color: #ced4da;
+    font-size: 0.9em;
+    font-weight: 400;
+
+}
+.table-row:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+.table-row div, .table-header div {
+    padding-right: 2px;
+    padding-left: 2px;
+    text-align: center;
+}
+
+.table-row-delete-icon:hover {
+    cursor: pointer;
+}
