@@ -1,9 +1,11 @@
 import * as d3 from 'd3';
 import './Scatterplot.css';
 
-const chartMargin =  {top: 100, bottom: 70, left: 70, right: 70};
-const chartWidth = 600 - chartMargin.left - chartMargin.right;
-const chartHeight = 500 - chartMargin.top - chartMargin.bottom;
+const margin =  {top: 100, bottom: 70, left: 70, right: 70};
+const svgWidth = 600;
+const svgHeight = 500;
+const chartWidth = svgWidth - margin.left - margin.right;
+const chartHeight = svgHeight - margin.top - margin.bottom;
 
 
 class Scatterplot {
@@ -16,10 +18,10 @@ class Scatterplot {
         // chart
         this.vis.chart = d3.select(parentRef.current)
             .append("svg")
-                .attr("width", chartWidth + chartMargin.left + chartMargin.right)
-                .attr("height", chartHeight + chartMargin.top + chartMargin.bottom)
+                .attr("width", svgWidth)
+                .attr("height", svgHeight)
             .append("g")
-                .attr("transform", `translate(${chartMargin.left}, ${chartMargin.top})`);
+                .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
         // title
         this.vis.xLabel = this.vis.chart.append("text")
@@ -113,7 +115,7 @@ class Scatterplot {
             .ease(ease)
             .attr("r", d => this.vis.radiusScale(d.lifeExpectancy));
 
-    }
+    };
 
     updateHover(hovered_data) {
         this.vis.chart.selectAll("circle").attr("fill", "#007bff");
@@ -121,7 +123,7 @@ class Scatterplot {
         if(hovered_data !== null) {
             this.vis.chart.select(`#${hovered_data.region.replace(/\s/g, '')}`).attr("fill", "#0F00FF");
         }
-    }
+    };
 }
 
 export default Scatterplot;
